@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import {Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import Axios from "axios";
 const Login = () =>{
 
@@ -16,11 +16,12 @@ const Login = () =>{
             alert("All fields are required!");
             return;
           }
-        Axios.post('http://localhost:3002/login',{
+        Axios.post('http://localhost:3002/api/v1/login',{
             UserName:username,
             Password:password,
         }).then((response)=>{
             if(response.data.id>0){
+                localStorage.setItem('token', response.data.token),
                 navigateTo('/dashboard')
             }
             console.log('success',response);

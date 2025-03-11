@@ -1,12 +1,14 @@
-import React,{useRef} from "react";
+import React,{useRef,useNavigate} from "react";
 import { Link } from "react-router-dom";
 import Axios from 'axios';
+
 const Register = () =>{
 
         const emailRef = useRef(null);
         const usernameRef = useRef(null);
         const passwordRef = useRef(null);
         const cnfrmPasswordRef = useRef(null);
+        const navigateTo = useNavigate();
 
         const createUser = (e) =>{
             e.preventDefault();
@@ -24,12 +26,14 @@ const Register = () =>{
                 alert("All fields are required!");
                 return;
               }
-            Axios.post('http://localhost:3002/register',{
+            Axios.post('http://localhost:3002/api/v1/register',{
                 Email: email,
                 UserName:username,
                 Password:password,
             }).then((response)=>{
                 console.log('user created',response);
+                    navigateTo('/dashboard')
+
             })
         }
 
