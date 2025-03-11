@@ -4,7 +4,8 @@ const Dashboard = () =>{
 
     return(
         <>
-        Dashoard
+         <a href="/logout">Logout</a>
+
         </>
     )
 
