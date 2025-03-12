@@ -13,6 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cors());
 app.options('*', cors());
+app.use(cookieParser()); // For handling refresh tokens securely
+app.use(require("cors")({ origin: true, credentials: true }));
 
 
 app.use('/api',apirouter)
